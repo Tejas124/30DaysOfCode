@@ -3,32 +3,26 @@
 using namespace std;
 
 void reverse(stack<char> &s){
-
-    //base case
-    if(s.empty()) return;
-
-    char element = s.top();
-    s.pop();
+    if(s >= e){
+        return;
+    }
     
-    cout<<element;
+    swap(str[s], str[e]);
 
-    reverse(s);
+    reverse(str, ++s, --e); 
+    //IMP: Pre-increment and post-increment concept
+    //If post-increment is used then function goes into infinte loop.
 
 }
 
 int main(){
 
     string str = "Hello";
-    stack<char> s;
 
     int n = str.length();
-    
-    for(int i=0; i<n; i++){
-        s.push(str[i]);
-    }
 
-    reverse(s);
+    reverse(str, 0, n-1);
 
-
+    cout<<str;
     return 0;
 }
