@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+
+        int m = s.length();
+        int n = t.length();
+        
+        if(m != n)
+            return false;
+        
+        unordered_map<char, char> ms;
+        unordered_map<char, char> mt;
+
+        for(int i=0; i<m; i++){
+            
+            //first traversal
+            if(ms.count(s[i]) == 0 && mt.count(t[i]) == 0){
+                //map s[i] with t[i]
+                ms[s[i]] = t[i];
+                mt[t[i]] = s[i];
+            }
+
+            //if count is not equal then return false
+            else if(ms.count(s[i]) == 1 && mt.count(t[i]) == 1){
+                
+                //if count is equal then check whether for each s[i] there is t[i] mapped, if not return false.
+                if(ms[s[i]] == t[i] && mt[t[i]] == s[i]){
+                   continue;
+                }
+                else{
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+
+        return true;
+    }
+};
