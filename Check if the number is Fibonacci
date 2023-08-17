@@ -1,0 +1,33 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h> 
+using namespace std; 
+
+// } Driver Code Ends
+class Solution{   
+public:
+    string checkFibonacci(int N){
+        
+        int f1 = sqrt(5*N*N + 4);
+        int f2 = sqrt(5*N*N - 4);
+        
+        if( (f1*f1 == 5*N*N + 4) || (f2*f2 == 5*N*N - 4)) return "Yes";
+        
+        else return "No";
+    }
+};
+
+//{ Driver Code Starts.
+int main() 
+{ 
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int N;
+        cin >> N;
+        Solution ob;
+        cout << ob.checkFibonacci(N) << endl;
+    }
+    return 0; 
+} 
+// } Driver Code Ends
