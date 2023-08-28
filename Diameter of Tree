@@ -1,0 +1,69 @@
+//Approach 1:
+class Solution {
+    
+     int height(struct Node* node){
+        
+        //base case
+        if(node == NULL) return 0;
+        
+        int left = height(node->left);
+        int right = height(node->right);
+        
+        int ans = max(left, right) + 1;
+        
+        return ans;
+        
+    }
+  public:
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node* root) {
+        
+        //base case
+        if(root == NULL) return 0;
+        
+        int opt1 = diameter(root->left);
+        int opt2 = diameter(root->right);
+        int opt3 = height(root->left) + height(root->right) + 1;
+        
+        int ans = max(opt1, max(opt2, opt3));
+        
+        return ans;
+    }
+};
+
+
+//Approach 2: Efficient
+class Solution {
+    
+    pair<int, int> diameterFast(Node* node){
+    
+        //base case
+        if(node == NULL){
+            pair<int, int> p = make_pair(0,0);
+            return p;
+        }
+        
+        pair<int,int> left = diameterFast(node->left);
+        pair<int,int> right = diameterFast(node->right);
+        
+        int op1 = left.first; // diameter
+        int op2 = right.first; // height
+        int op3 = left.second + right.second + 1;
+        
+        pair<int,int> ans;
+        
+        ans.first = max(op1, max(op2, op3));
+        ans.second = max(left.second , right.second) + 1;
+        
+        return ans;
+        
+    }
+    
+    
+  public:
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node* root) {
+       
+       return diameterFast(root).first;
+    }
+};
