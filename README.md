@@ -1,2 +1,2 @@
-# 30DaysOfCode
-Consistently coding for 30 days
+# Data Structures
+Solving Coding questions and improving Problem Solving
